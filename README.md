@@ -104,6 +104,48 @@ You can then access the application through the following URL:
 - Minimum required Docker engine version `17.04` for development (see [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/))
 - The default configuration uses a host-volume in your home directory `.docker-composer` for composer caches
 
+### Установка на OpenServer (OSPanel)
+
+1. Скачайте и установите [OpenServer](https://ospanel.io/) если он еще не установлен
+
+2. Создайте новый домен:
+   - Откройте OpenServer
+   - Нажмите правой кнопкой мыши на иконку в трее
+   - Выберите "Домены -> Добавить домен"
+   - Введите название домена (например, siteship.local)
+   - Укажите путь к папке: `domains/SiteShip/web`
+
+3. Настройка проекта:
+   - Скопируйте все файлы проекта в папку `domains/SiteShip` в директории OpenServer
+   - Откройте консоль OpenServer (значок в трее -> "Дополнительно" -> "Консоль")
+   - Перейдите в директорию проекта: `cd domains/SiteShip`
+   - Установите зависимости: `composer install`
+
+4. Настройка базы данных:
+   - Создайте новую базу данных через phpMyAdmin (http://localhost/phpmyadmin)
+   - Настройте подключение к базе данных в файле `config/db.php`
+
+5. Настройка прав доступа:
+   - Убедитесь, что папки `runtime` и `web/assets` доступны для записи
+
+6. Запуск проекта:
+   - Запустите OpenServer
+   - Откройте браузер
+   - Перейдите по адресу: `http://siteship.local`
+
+### Возможные проблемы и их решение
+
+1. Ошибка 404:
+   - Проверьте, что в настройках OpenServer выбран правильный домен
+   - Убедитесь, что путь к папке web указан верно
+
+2. Ошибка подключения к базе данных:
+   - Проверьте правильность данных в `config/db.php`
+   - Убедитесь, что сервер MySQL запущен
+
+3. Ошибки прав доступа:
+   - Проверьте права на папки `runtime` и `web/assets`
+   - При необходимости выполните команду: `chmod 777 runtime web/assets`
 
 CONFIGURATION
 -------------
@@ -193,7 +235,6 @@ To execute acceptance tests do the following:
    ```
 
    The database configuration can be found at `config/test_db.php`.
-
 
 6. Start web server:
 
