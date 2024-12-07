@@ -1,0 +1,248 @@
+main > .container {
+    padding: 70px 0px 20px;
+    max-width: 95%;
+}
+
+.footer {
+    background-color: #f5f5f5;
+    font-size: .9em;
+    height: 60px;
+}
+
+.footer > .container {
+    padding-right: 0px;
+    padding-left: 0px;
+    max-width: 95%;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    content: '';
+    left: 3px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 2px 4px;
+    background: transparent;
+}
+
+a.asc:after {
+    border-bottom: solid 7px #212529;
+    border-top-width: 0;
+}
+
+a.desc:after {
+    border-top: solid 7px #212529;
+    border-bottom-width: 0;
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.grid-view {
+    width: 100% !important;
+    overflow-x: auto;
+    padding: 0 !important;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+    padding-top: 7px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@media(max-width:767px) {
+    .nav li > form > button.logout {
+        display:block;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.nav > li > form > button.logout:focus {
+    outline: none;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100% !important;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding: 1.25rem 0.5rem !important;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.table {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.pagination {
+    display: flex;
+    margin-top: 20px;
+    align-items: center; /* Добавлено для центрирования по вертикали */
+    flex-wrap: wrap; /* Добавлено для переноса элементов на новую строку, если не хватает места */
+}
+
+.pagination .page-link,
+.pagination .page-item a {
+    margin: 0 2px; /* Расстояние между кнопками */
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    display: inline-block; /* Убедитесь, что элементы a ведут себя как блоки */
+    border-radius: 4px; /* Скругленные углы */
+    transition: background-color 0.3s, color 0.3s; /* Плавные переходы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.pagination .page-link:hover,
+.pagination .page-item a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination .active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.pagination .disabled .page-link,
+.pagination .disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: default;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+/* Стили для таблиц */
+.container {
+    max-width: 95% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.col-md-12 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.table-responsive {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.site-index {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.site-index .jumbotron {
+    background: transparent;
+    text-align: center;
+    padding: 2rem;
+    margin: 0;
+}
+
+.site-index .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.site-index .btn i {
+    margin-right: 0.5rem;
+}
+
+.site-index .btn-primary {
+    background: #007bff;
+    border: none;
+}
+
+.site-index .btn-success {
+    background: #28a745;
+    border: none;
+}
+
+.site-index .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.site-index .display-4 {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.site-index .lead {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 2rem;
+}

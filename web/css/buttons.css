@@ -1,0 +1,102 @@
+/* Общие стили для кнопок */
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Общие стили для кнопок действий */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    margin-right: 0.25rem;
+    transition: all 0.3s ease;
+    margin: 0 2px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+/* Контейнер для кнопок действий */
+td .btn-action {
+    margin: 0 1px;
+}
+
+td {
+    white-space: nowrap;
+}
+
+/* Стили для кнопки просмотра */
+.btn-info.btn-action {
+    color: #0dcaf0;
+    background-color: transparent;
+    border-color: #0dcaf0;
+}
+
+.btn-info.btn-action:hover {
+    color: #fff;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+/* Стили для кнопки редактирования */
+.btn-warning.btn-action {
+    color: #ffc107;
+    background-color: transparent;
+    border-color: #ffc107;
+}
+
+.btn-warning.btn-action:hover {
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+/* Стили для кнопки удаления */
+.btn-danger.btn-action {
+    color: #dc3545;
+    background-color: transparent;
+    border-color: #dc3545;
+}
+
+.btn-danger.btn-action:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Стили для кнопки сообщения */
+.btn-primary.btn-action {
+    color: #0d6efd;
+    background-color: transparent;
+    border-color: #0d6efd;
+}
+
+.btn-primary.btn-action:hover {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
