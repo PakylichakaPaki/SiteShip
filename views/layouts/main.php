@@ -20,6 +20,33 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/icon.png')]);
+$this->registerCss("
+    .btn-action {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 4px !important;
+        line-height: 1 !important;
+    }
+    
+    .btn-action i {
+        font-size: 14px !important;
+    }
+    
+    .btn-group.gap-2 {
+        display: inline-flex !important;
+        gap: 8px !important;
+    }
+    
+    .btn-group.gap-2 > .btn {
+        float: none !important;
+        position: static !important;
+        border-radius: 4px !important;
+    }
+");
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

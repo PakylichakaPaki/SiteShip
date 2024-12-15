@@ -71,8 +71,11 @@ class JobOpeningsController extends Controller
         $model = new JobOpenings();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->date_of_creation = date('Y-m-d H:i:s');
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
@@ -115,6 +118,30 @@ class JobOpeningsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Обновляет дату создания вакансии
+     * @param int $id ID вакансии
+     * @return mixed
+     */
+    public function actionRenew($id)
+    {
+        $model = $this->findModel($id);
+        
+        // Проверяем, что текущий пользователь является владельцем вакансии
+        if ($model->user_id !== Yii::$app->user->id) {
+            throw new \yii\web\ForbiddenHttpException('У вас нет прав для выполнения этого действия.');
+        }
+
+        $model->date_of_creation = date('Y-m-d H:i:s');
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', 'Вакансия успешно обновлена.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Ошибка при обновлении вакансии.');
+        }
+
+        return $this->redirect(['profile/index']);
     }
 
     /**
