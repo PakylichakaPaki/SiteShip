@@ -40,46 +40,49 @@ class CandidateSearch extends Candidate
      */
     public function search($params)
     {
-        $query = Candidate::find();
+    $query = Candidate::find();
 
-        // add conditions that should always apply here
-        $query->joinWith(['status', 'user', 'jobOpenings']);
+    // Подключение связей (укажите связи в модели Candidate, если их ещё нет)
+    $query->joinWith(['status', 'user', 'jobOpenings']);
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_ASC
-                ]
-            ],
-        ]);
+    $dataProvider = new ActiveDataProvider([
+        'query' => $query,
+        'pagination' => [
+            'pageSize' => 10,
+        ],
+        'sort' => [
+            'defaultOrder' => [
+                'id' => SORT_ASC
+            ]
+        ],
+    ]);
 
-        $this->load($params);
+    $this->load($params);
 
-        if (!$this->validate()) {
-            return $dataProvider;
-        }
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'status_id' => $this->status_id,
-            'job_opening_id' => $this->job_opening_id,
-        ]);
-
-        $query->andFilterWhere(['like', 'surname', $this->surname])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'patronymic', $this->patronymic])
-            ->andFilterWhere(['like', 'desired_position', $this->desired_position])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'medical_card', $this->medical_card])
-            ->andFilterWhere(['like', 'work_experience', $this->work_experience]);
-
+    if (!$this->validate()) {
+        // Если валидация не прошла, возвращаем пустой DataProvider
+        $query->where('0=1');
         return $dataProvider;
+    }
+
+    // Условие фильтрации
+    $query->andFilterWhere([
+        'candidate.id' => $this->id,
+        'candidate.user_id' => $this->user_id,
+        'candidate.status_id' => $this->status_id,
+        'candidate.job_opening_id' => $this->job_opening_id,
+    ]);
+
+    // Добавляем фильтры по текстовым полям, указывая таблицу
+    $query->andFilterWhere(['like', 'candidate.surname', $this->surname])
+        ->andFilterWhere(['like', 'candidate.name', $this->name]) // Указана таблица "candidate"
+        ->andFilterWhere(['like', 'candidate.patronymic', $this->patronymic])
+        ->andFilterWhere(['like', 'candidate.desired_position', $this->desired_position])
+        ->andFilterWhere(['like', 'candidate.phone', $this->phone])
+        ->andFilterWhere(['like', 'candidate.email', $this->email])
+        ->andFilterWhere(['like', 'candidate.medical_card', $this->medical_card])
+        ->andFilterWhere(['like', 'candidate.work_experience', $this->work_experience]);
+
+    return $dataProvider;
     }
 }
