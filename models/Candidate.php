@@ -116,4 +116,13 @@ class Candidate extends \yii\db\ActiveRecord
     {
         return $this->hasOne(JobOpenings::class, ['id' => 'job_opening_id']);
     }
+
+    /**
+     * Возвращает время до истечения кандидата в формате относительной даты
+     */
+    public function getExpirationDate()
+    {
+        $timestamp = strtotime($this->created_at . ' +15 days');
+        return $timestamp;
+    }
 }

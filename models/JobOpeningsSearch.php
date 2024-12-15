@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\JobOpenings;
+use yii\db\Expression;
 
 /**
  * JobOpeningsSearch represents the model behind the search form of `app\models\JobOpenings`.
@@ -27,7 +28,7 @@ class JobOpeningsSearch extends Model
     {
         return [
             [['id', 'user_id'], 'integer'],
-            [['title_of_the_position', 'term_of_employment', 'company_name', 'link_to_the_questionnaire', 'contact_information'], 'safe'],
+            [['title_of_the_position', 'term_of_employment', 'company_name', 'link_to_the_questionnaire', 'contact_information', 'date_of_creation'], 'safe'],
             [['salary'], 'safe'],
         ];
     }
@@ -51,6 +52,9 @@ class JobOpeningsSearch extends Model
     public function search($params)
     {
         $query = JobOpenings::find();
+
+        // Добавляем условие для фильтрации истекших вакансий
+        $query->andWhere(['>', new Expression('DATE_ADD(date_of_creation, INTERVAL 15 DAY)'), new Expression('NOW()')]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -86,6 +90,7 @@ class JobOpeningsSearch extends Model
         $query->andFilterWhere(['like', 'title_of_the_position', $this->title_of_the_position])
             ->andFilterWhere(['like', 'term_of_employment', $this->term_of_employment])
             ->andFilterWhere(['like', 'company_name', $this->company_name])
+            ->andFilterWhere(['like', 'link_to_the_questionnaire', $this->link_to_the_questionnaire])
             ->andFilterWhere(['like', 'contact_information', $this->contact_information]);
 
         // Фильтр по пользователю

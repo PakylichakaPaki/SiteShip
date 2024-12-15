@@ -98,26 +98,26 @@ if (Yii::$app->user->isGuest): ?>
                                     'contentOptions' => ['style' => 'width: 15%;'],
                                 ],
                                 [
-                                    'class' => ActionColumn::class,
+                                    'class' => 'yii\grid\ActionColumn',
                                     'contentOptions' => ['style' => 'width: 10%;'],
                                     'template' => '{view} {update} {delete} {respond}',
                                     'buttons' => [
                                         'view' => function ($url, $model) {
-                                            return Html::a('<i class="fas fa-eye text-primary"></i>', $url, [
+                                            return Html::a('<i class="fas fa-eye"></i>', $url, [
                                                 'title' => 'Просмотр',
-                                                'class' => 'btn btn-sm btn-outline-primary mr-1'
+                                                'class' => 'btn btn-primary btn-action'
                                             ]);
                                         },
                                         'update' => function ($url, $model) {
-                                            return Html::a('<i class="fas fa-edit text-success"></i>', $url, [
+                                            return Html::a('<i class="fas fa-edit"></i>', $url, [
                                                 'title' => 'Редактировать',
-                                                'class' => 'btn btn-sm btn-outline-success mr-1'
+                                                'class' => 'btn btn-info btn-action'
                                             ]);
                                         },
                                         'delete' => function ($url, $model) {
-                                            return Html::a('<i class="fas fa-trash text-danger"></i>', $url, [
+                                            return Html::a('<i class="fas fa-trash-alt"></i>', $url, [
                                                 'title' => 'Удалить',
-                                                'class' => 'btn btn-sm btn-outline-danger',
+                                                'class' => 'btn btn-danger btn-action',
                                                 'data' => [
                                                     'confirm' => 'Вы уверены, что хотите удалить эту вакансию?',
                                                     'method' => 'post',
@@ -125,11 +125,10 @@ if (Yii::$app->user->isGuest): ?>
                                             ]);
                                         },
                                         'respond' => function ($url, $model) {
-                                            // Проверяем роль текущего пользователя
                                             if (!Yii::$app->user->isGuest && Yii::$app->user->identity->roleMiddleware('executor')) {
                                                 return Html::a('<i class="fas fa-comments"></i>', ['/chat/index', 'userId' => $model->user_id], [
                                                     'title' => 'Связаться с работодателем',
-                                                    'class' => 'btn btn-sm btn-outline-primary mr-1'
+                                                    'class' => 'btn btn-success btn-action'
                                                 ]);
                                             }
                                             return '';
