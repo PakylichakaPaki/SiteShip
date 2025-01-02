@@ -1,11 +1,3 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Базовый Шаблон Проекта</h1>
-    <br>
-</p>
-
 # Руководство по установке
 
 ## Локальная разработка
@@ -20,8 +12,8 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/your-username/your-project.git
-cd your-project
+git clone https://github.com/PakylichakaPaki/SiteShip.git
+cd SiteShip
 ```
 
 2. Установите зависимости:
@@ -88,9 +80,6 @@ php yii gii/crud
 # Запуск тестов
 php vendor/bin/codecept run
 ```
-
-
-// ... предыдущие разделы ...
 
 ## Развертывание на хостинге
 
@@ -253,5 +242,3 @@ echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.
 apt-get update
 apt-get install newrelic-php5
 ```
-
-// ... остальные разделы ...
